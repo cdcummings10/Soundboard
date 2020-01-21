@@ -21,21 +21,27 @@ namespace Soundboard
             string[] clips = Directory.GetFiles(@"C:\Users\Menalaus\Documents\Soundboard");
 
 
-            int top = 50;
-            int left = 100;
-
+            int top = 10;
+            int left = 10;
+            int count = 0;
             foreach (string clip in clips)
             {
+                if(count % 8 == 0)
+                {
+                    left = 10;
+                    top += 45;
+                }
                 Button button = new Button();
                 button.Top = top;
                 button.Left = left;
-                top += 50;
                 int stringClipIndex = clip.LastIndexOf('\\') + 1;
                 button.Text = clip.Substring(stringClipIndex, clip.Length -stringClipIndex);
                 button.Height = 40;
-                button.Width = 200;
+                button.Width = 150;
                 button.Click += new EventHandler((sender, e) => AttachFile(sender, e, clip));
                 Controls.Add(button);
+                count++;
+                left += 155;
             }
         }
 
