@@ -22,7 +22,7 @@ namespace Soundboard
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string settingsPath = "../../Settings.txt";
+            string settingsPath = "Settings.txt";
             if (textBox1.Text != "")
             {
                 Path = textBox1.Text;

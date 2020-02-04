@@ -18,7 +18,12 @@ namespace Soundboard
             InitializeComponent();
 
             bool pathFound = false;
-            string settingsPath = "../../Settings.txt";
+            string settingsPath = "Settings.txt";
+
+            if (!File.Exists(settingsPath))
+            {
+                File.Create(settingsPath);
+            }
 
             string[] pathFile = File.ReadAllLines(settingsPath);
             if(pathFile[0].Length <= 6)
