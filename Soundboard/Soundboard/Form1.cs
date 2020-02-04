@@ -55,11 +55,16 @@ namespace Soundboard
             player.controls.play();
         }
 
-        private string GetFolderPath()
+        private void folderPathToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PopUpFilePath popUp = new PopUpFilePath();
             popUp.Show();
-            return popUp.Path;
+            this.Close();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

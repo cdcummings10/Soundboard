@@ -28,6 +28,7 @@ namespace Soundboard
                 Path = textBox1.Text;
                 File.WriteAllLines(settingsPath, new string[] { $"path: {Path}" });
             }
+            this.Close();
             Form1 form = new Form1();
             form.Show();
         }
