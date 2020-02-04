@@ -18,7 +18,8 @@ namespace Soundboard
         public Form1()
         {
             InitializeComponent();
-            string[] clips = Directory.GetFiles(@"C:\Users\Menalaus\Documents\Soundboard");
+            string path = GetFolderPath();
+            string[] clips = Directory.GetFiles(path);
 
 
             int top = 10;
@@ -26,7 +27,7 @@ namespace Soundboard
             int count = 0;
             foreach (string clip in clips)
             {
-                if(count % 8 == 0)
+                if (count % 8 == 0)
                 {
                     left = 10;
                     top += 45;
@@ -35,7 +36,7 @@ namespace Soundboard
                 button.Top = top;
                 button.Left = left;
                 int stringClipIndex = clip.LastIndexOf('\\') + 1;
-                button.Text = clip.Substring(stringClipIndex, clip.Length -stringClipIndex);
+                button.Text = clip.Substring(stringClipIndex, clip.Length - stringClipIndex);
                 button.Height = 40;
                 button.Width = 150;
                 button.Click += new EventHandler((sender, e) => AttachFile(sender, e, clip));
@@ -51,6 +52,13 @@ namespace Soundboard
             player = new WindowsMediaPlayer();
             player.URL = path;
             player.controls.play();
+        }
+
+        private string GetFolderPath()
+        {
+            PopUpFilePath popUp = new PopUpFilePath();
+            popUp.Show();
+            return popUp.Path;
         }
     }
 }
