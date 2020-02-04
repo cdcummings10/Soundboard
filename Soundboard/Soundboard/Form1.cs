@@ -18,7 +18,8 @@ namespace Soundboard
         public Form1()
         {
             InitializeComponent();
-            string path = GetFolderPath();
+            string[] pathArray = File.ReadAllLines("../../Settings.txt");
+            string path = pathArray[0].Substring(6);
             string[] clips = Directory.GetFiles(path);
 
 
